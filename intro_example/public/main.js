@@ -1,4 +1,4 @@
-const messageParagraph = document.getElementById("message")
+const messageParagraph = document.getElementById("message");
 
 // Motsvarande med fetch
 /* fetch("/greeting")
@@ -7,9 +7,19 @@ const messageParagraph = document.getElementById("message")
 */
 
 async function fetchMessage() {
-    const response = await fetch("/greeting")
-    const data = await response.json()
-    messageParagraph.textContent = data.message
+    const response = await fetch("/greeting");
+    const data = await response.json();
+    messageParagraph.textContent = data.message;
 }
 
-fetchMessage()
+fetchMessage();
+
+async function postMessage() {
+    await fetch("/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: "Client sent this message" }),
+    });
+}
+
+postMessage();
