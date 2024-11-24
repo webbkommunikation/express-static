@@ -9,7 +9,7 @@ const messageParagraph = document.getElementById("message")
 async function fetchMessage() {
     const response = await fetch("/greeting")
     const data = await response.json()
-    messageParagraph.textContent = response.message
+    messageParagraph.textContent = data.message
 }
 
 fetchMessage()
